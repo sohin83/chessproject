@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="chessapp">
+<head>
+    <meta charset="utf-8" />
+    <title>Chess </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+	  <link rel="stylesheet" href="css/custom.css" type="text/css" />
+	  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+	  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="#/">Top Players</a>
+		  <a class="blog-nav-item active" href="#/rules">Rules</a>	
+		  <a class="blog-nav-item active" href="#/matches">Matches</a>
+		  <a class="blog-nav-item active" ng-if="globals.currentUser!==undefined" href="#/players">Players</a>
+		  
+		  <a class="blog-nav-item active pull-right" href="#/login">{{globals.currentUser!==undefined?'Logout':'Login'}}</a>          
+		  <a class="blog-nav-item pull-right" ng-if="globals.currentUser!==undefined">{{globals.currentUser.username}}</a>		  
+        </nav>
+      </div>
+    </div>
+	
+<div style="position:relative;">
+      <div ng-view="" ng-class="'slide'" id="ng-view"></div>
+</div>
+	
+   
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/angular.js"></script>
+	<script src="js/ui-bootstrap-tpls-0.11.2.min.js"></script>
+    <script src="js/angular-route.js"></script>
+	<script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-cookies.js"></script>
+	<!-- Some Bootstrap Helper Libraries -->
+
+
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/underscore.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="app/app.js"></script>	
+    <script src="app/authentication/services.js"></script>
+    <script src="app/authentication/controllers.js"></script>
+	<script src="app/data.js"></script>
+	<script src="app/directives.js"></script>
+    <script src="app/controllers.js"></script>
+</body>
+</html>

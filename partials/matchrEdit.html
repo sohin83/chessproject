@@ -1,0 +1,70 @@
+    <button type="button" class="close" ng-click="cancel();">
+        <i class="fa fa-times-circle-o" style="margin:10px;color:blue;"></i>
+    </button>
+    <div class="modal-header">
+        <h3 class="modal-title">{{title}}</h3>
+    </div>
+    <div class="modal-body">
+        <form name="match_form" class="form-horizontal" role="form" novalidate>
+			<form-element label="Date" mod="match">
+				<input required class="form-control" type="date" name="date" ng-model="match.date">				
+            </form-element>
+			
+			
+			<form-element label="Player 1" mod="match">
+				<select required class="form-control" id="player1" name="player1" ng-model="match.player1">
+					<option ng-selected="x.id==match.player1" ng-repeat="x in players | orderBy:name " value="{{x.id}}">{{x.name}}</option>
+				</select>
+            </form-element>
+			
+			<form-element label="Player 1 Points" mod="match">
+				<input type="number" ng-model="match.player1_points" >
+            </form-element>
+			
+			
+			
+			<form-element label="Player 2" mod="match">
+                <select required class="form-control" id="player2" name="player2" ng-model="match.player2">
+					<option ng-selected="x.id==match.player2" ng-repeat="x in players" value="{{x.id}}">{{x.name}}</option>
+				</select>				
+            </form-element>	
+
+			<form-element label="Player 2 Points" mod="match">
+				<input type="number" ng-model="match.player2_points" >
+            </form-element>
+
+
+			<form-element label="Result" mod="match">
+                <select class="form-control" ng-model="match.result">
+					<option ng-selected="0==match.result" value="0">Pending</option>
+					<option ng-selected="10==match.result" value="10">Check and Mate</option>
+					<option ng-selected="5==match.result" value="5">Draw</option>
+				</select>				
+            </form-element>
+
+			<form-element label="Result" mod="match">
+				<select class="form-control" id="winner_id" ng-model="match.winner_id">
+					<option ng-disabled="true"  ng-selected="true" value="">Select Winner</option>
+					
+					<option ng-selected="x.id==match.winner_id" ng-repeat="x in players | byplayers:match.player1:match.player2" value="{{x.id}}">{{x.name}}</option>
+				</select>                			
+            </form-element>			
+            
+            <div class="space"></div>
+            <div class="space-4"></div>
+            <div class="modal-footer">
+                <form-element label="">
+                    <div class="text-right">
+                        <a class="btn btn-sm" ng-click="cancel()"><i class="ace-icon fa fa-reply"></i>Cancel</a>
+                        <button ng-click="saveMatch(match);"
+                                ng-disabled="match_form.$invalid || enableUpdate"
+                                class="btn btn-sm btn-primary"
+                                type="submit">
+                            <i class="ace-icon fa fa-check"></i>{{buttonText}}
+                        </button>
+                    </div>
+                </form-element>
+            </div>
+        </form>
+    </div>
+

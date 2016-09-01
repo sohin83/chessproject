@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="page-content">
+<h4 class="blog-post-title">Top Players</h4>
+<hr/>
+<div class="table-responsive">
+<div class="panel panel-primary">
+  <div class="panel-heading">List of top players
+      <div class="sw-search" >
+            <div class="nav-search" id="nav-search">
+                    Filter: <span class="input-icon">
+                        <input placeholder="Filter players list ..." class="nav-search-input" ng-model="filterPlayer" ng-change="resetLimit();"  autocomplete="off" type="text" style="width:300px;" focus>
+                        <i class="search-icon fa fa-search nav-search-icon"></i>
+                    </span>
+            </div>
+        </div>
+    </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+    <tr ng-show="players.length==0"><td style="vertical-align:middle;"><i class="fa fa-ban fa-3x"></i>&nbsp;No data found</td></tr>
+    <tr ng-hide="players.length>-1"><td style="vertical-align:middle;"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Loading</td></tr>
+    
+    <tr><th ng-repeat="c in columns">{{c.text}}</th></tr>
+
+    <tr ng-repeat="c in players | filter:filterPlayer" id="{{c.id}}" animate-on-change='c.name' class="animate-repeat">
+       <td>{{$index+1}}</td><td>{{c.name}}</td><td>{{c.totalplayed}}</td><td>{{c.totalwins?c.totalwins:0}}</td><td>{{c.totalpoints?c.totalpoints:0}}</td><td>{{c.winpoints?c.winpoints:0}}</td>
+    </tr>
+    </table>
+</div>
+</div>
+</div>
+              
+			  </div>
+</div>
