@@ -7,6 +7,7 @@ $app = new \Slim\Slim();
 $app = \Slim\Slim::getInstance();
 $db = new dbHelper();
 
+
 /**
  * Database Helper Function templates
  */
